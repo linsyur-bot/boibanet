@@ -16,23 +16,25 @@ const BlogModel = {
   async getAll() {
     const q = query(
       collection(db, "blog"),
-      where("status", "==", "published"),
       orderBy("tanggal", "desc")
     );
     const snap = await getDocs(q);
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    return snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .filter(d => !d.status || d.status === "published");
   },
 
   // Ambil artikel terbaru (untuk home)
   async getLatest(n = 3) {
     const q = query(
       collection(db, "blog"),
-      where("status", "==", "published"),
-      orderBy("tanggal", "desc"),
-      limit(n)
+      orderBy("tanggal", "desc")
     );
     const snap = await getDocs(q);
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    return snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .filter(d => !d.status || d.status === "published")
+      .slice(0, n);
   },
 
   // Ambil satu artikel by ID
@@ -46,12 +48,12 @@ const BlogModel = {
   async getByKategori(kategori) {
     const q = query(
       collection(db, "blog"),
-      where("status", "==", "published"),
-      where("kategori", "==", kategori),
       orderBy("tanggal", "desc")
     );
     const snap = await getDocs(q);
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    return snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .filter(d => (!d.status || d.status === "published") && d.kategori === kategori);
   }
 
 };
