@@ -1,3 +1,4 @@
+// assets/js/controllers/ProfilController.js
 import { getProfil } from '../models/ProfilModel.js';
 
 function toProxyUrl(url) {
