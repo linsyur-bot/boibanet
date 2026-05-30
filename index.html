@@ -17,6 +17,7 @@
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="/assets/js/include.js" defer></script>
   <style>
     @keyframes zoomBg {
       0%   { transform: scale(1); }
@@ -34,37 +35,7 @@
 </head>
 <body class="bg-gray-50 font-sans">
 
-  <!-- NAVBAR -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="/"><img src="/assets/img/logo-Photoroom.png" alt="Boibanet" class="h-10 w-auto"></a>
-      <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-        <li><a href="/" class="text-primary border-b-2 border-primary pb-1">Home</a></li>
-        <li><a href="/profil.html" class="hover:text-primary transition">Profil</a></li>
-        <li><a href="/materi/index.html" class="hover:text-primary transition">Materi</a></li>
-        <li><a href="/blog/index.html" class="hover:text-primary transition">Blog</a></li>
-        <li><a href="/portofolio/index.html" class="hover:text-primary transition">Portofolio</a></li>
-        <li><a href="/cv.html" class="hover:text-primary transition">CV</a></li>
-        <li><a href="/kontak.html" class="hover:text-primary transition">Kontak</a></li>
-      </ul>
-      <button id="menu-toggle" class="md:hidden text-gray-600">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
-      <ul class="flex flex-col gap-3 text-sm font-medium text-gray-600">
-        <li><a href="/">Home</a></li>
-        <li><a href="/profil.html">Profil</a></li>
-        <li><a href="/materi/index.html">Materi</a></li>
-        <li><a href="/blog/index.html">Blog</a></li>
-        <li><a href="/portofolio/index.html">Portofolio</a></li>
-        <li><a href="/cv.html">CV</a></li>
-        <li><a href="/kontak.html">Kontak</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div include="/assets/components/header.html"></div>
 
   <!-- HERO -->
   <section class="relative h-[70vh] min-h-[420px] max-h-[600px] flex items-center justify-center overflow-hidden">
@@ -131,16 +102,14 @@
     </div>
   </section>
 
-  <!-- BLOG TERBARU — dari Firestore -->
+  <!-- BLOG TERBARU -->
   <section class="bg-white py-16 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="flex justify-between items-center mb-8">
         <h2 class="text-2xl font-bold text-gray-800">Blog Terbaru</h2>
         <a href="/blog/index.html" class="text-sm text-primary hover:underline">Lihat semua →</a>
       </div>
-      <!-- Container diisi JS -->
       <div id="blog-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Skeleton loading -->
         <div class="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
           <div class="bg-gray-200 h-40"></div>
           <div class="p-5 space-y-3">
@@ -169,30 +138,8 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-secondary text-white py-10 px-4">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="flex items-center gap-3">
-        <img src="/assets/img/logo-Photoroom.png" alt="Boibanet" class="h-8 w-auto brightness-0 invert">
-        <p class="text-blue-200 text-sm">Dosen Jaringan Komputer — UNIPA</p>
-      </div>
-      <div class="flex gap-6 text-sm text-blue-200">
-        <a href="/profil.html" class="hover:text-white transition">Profil</a>
-        <a href="/blog/index.html" class="hover:text-white transition">Blog</a>
-        <a href="/kontak.html" class="hover:text-white transition">Kontak</a>
-      </div>
-      <p class="text-blue-300 text-xs">© 2025 Boibanet. All rights reserved.</p>
-    </div>
-  </footer>
+  <div include="/assets/components/footer.html"></div>
 
-  <script>
-    // Mobile menu
-    document.getElementById('menu-toggle').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
-  </script>
-
-  <!-- Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
     import { getFirestore, collection, query, where, orderBy, limit, getDocs }
@@ -210,7 +157,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // Warna badge per kategori
     const badgeColor = {
       'Jaringan': 'text-primary bg-blue-50',
       'Teknologi': 'text-green-600 bg-green-50',
@@ -230,10 +176,7 @@
         const snap = await getDocs(q);
 
         if (snap.empty) {
-          container.innerHTML = `
-            <div class="col-span-3 text-center py-10 text-gray-400 text-sm">
-              Belum ada artikel blog.
-            </div>`;
+          container.innerHTML = `<div class="col-span-3 text-center py-10 text-gray-400 text-sm">Belum ada artikel blog.</div>`;
           return;
         }
 
@@ -246,13 +189,10 @@
             : '';
           const thumb = d.thumbnail
             ? `<img src="${d.thumbnail}" class="w-full h-full object-cover" alt="${d.judul}">`
-            : `<div class="w-full h-full bg-gray-100 flex items-center justify-center">
-                <span class="text-gray-400 text-sm">No Image</span>
-               </div>`;
+            : `<div class="w-full h-full bg-gray-100 flex items-center justify-center"><span class="text-gray-400 text-sm">No Image</span></div>`;
 
           container.innerHTML += `
-            <a href="/blog/detail.html?id=${doc.id}"
-              class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition block">
+            <a href="/blog/post.html?id=${doc.id}" class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition block">
               <div class="h-40 overflow-hidden">${thumb}</div>
               <div class="p-5">
                 <span class="text-xs font-medium px-2 py-1 rounded ${badge}">${d.kategori || 'Umum'}</span>
@@ -264,14 +204,12 @@
         });
       } catch (err) {
         console.error(err);
-        container.innerHTML = `
-          <div class="col-span-3 text-center py-10 text-gray-400 text-sm">
-            Gagal memuat blog.
-          </div>`;
+        container.innerHTML = `<div class="col-span-3 text-center py-10 text-gray-400 text-sm">Gagal memuat blog.</div>`;
       }
     }
 
     loadBlog();
   </script>
+
 </body>
 </html>
