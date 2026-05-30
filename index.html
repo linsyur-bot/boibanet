@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boibanet - Web Dosen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',
+            secondary: '#1e3a5f',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+  <!-- ================================================ -->
+  <!-- NAVBAR -->
+  <!-- ================================================ -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+
+      <!-- Logo -->
+      <a href="/" class="text-xl font-bold text-primary">
+        Boibanet
+      </a>
+
+      <!-- Menu Desktop -->
+      <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+        <li><a href="/" class="text-primary border-b-2 border-primary pb-1">Home</a></li>
+        <li><a href="/profil.html" class="hover:text-primary transition">Profil</a></li>
+        <li><a href="/materi/index.html" class="hover:text-primary transition">Materi</a></li>
+        <li><a href="/blog/index.html" class="hover:text-primary transition">Blog</a></li>
+        <li><a href="/portofolio/index.html" class="hover:text-primary transition">Portofolio</a></li>
+        <li><a href="/cv.html" class="hover:text-primary transition">CV</a></li>
+        <li><a href="/kontak.html" class="hover:text-primary transition">Kontak</a></li>
+      </ul>
+
+      <!-- Hamburger Mobile -->
+      <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
+      <ul class="flex flex-col gap-3 text-sm font-medium text-gray-600">
+        <li><a href="/" class="text-primary">Home</a></li>
+        <li><a href="/profil.html" class="hover:text-primary">Profil</a></li>
+        <li><a href="/materi/index.html" class="hover:text-primary">Materi</a></li>
+        <li><a href="/blog/index.html" class="hover:text-primary">Blog</a></li>
+        <li><a href="/portofolio/index.html" class="hover:text-primary">Portofolio</a></li>
+        <li><a href="/cv.html" class="hover:text-primary">CV</a></li>
+        <li><a href="/kontak.html" class="hover:text-primary">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================================================ -->
+  <!-- HERO -->
+  <!-- ================================================ -->
+  <section class="bg-gradient-to-br from-primary to-secondary text-white py-20 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
+
+      <!-- Foto -->
+      <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg flex-shrink-0">
+        <img src="/assets/img/foto-profil.jpg" alt="Foto Dosen"
+          class="w-full h-full object-cover"
+          onerror="this.src='https://ui-avatars.com/api/?name=Lod+Eliaser&background=1e40af&color=fff&size=160'">
+      </div>
+
+      <!-- Info -->
+      <div>
+        <p class="text-blue-200 text-sm font-medium mb-1">Selamat Datang</p>
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">Lod Eliaser Insyur</h1>
+        <p class="text-blue-100 text-lg mb-4">Dosen Jaringan Komputer — UNIPA</p>
+        <p class="text-blue-100 text-sm max-w-lg leading-relaxed">
+          Berbagi ilmu, materi kuliah, dan perkembangan teknologi
+          di bidang jaringan komputer untuk mahasiswa D3 dan S1.
+        </p>
+        <div class="flex gap-3 mt-6">
+          <a href="/profil.html"
+            class="bg-white text-primary font-semibold px-5 py-2 rounded-lg text-sm hover:bg-blue-50 transition">
+            Lihat Profil
+          </a>
+          <a href="/kontak.html"
+            class="border border-white text-white font-semibold px-5 py-2 rounded-lg text-sm hover:bg-white hover:text-primary transition">
+            Hubungi Saya
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- HIGHLIGHT KONTEN -->
+  <!-- ================================================ -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Konten Utama</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Card Materi -->
+      <a href="/materi/index.html"
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition">
+          <svg class="w-6 h-6 text-primary group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-800 mb-1">Materi Kuliah</h3>
+        <p class="text-sm text-gray-500">D3 & S1 Jaringan Komputer</p>
+      </a>
+
+      <!-- Card Blog -->
+      <a href="/blog/index.html"
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-600 transition">
+          <svg class="w-6 h-6 text-green-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-800 mb-1">Blog</h3>
+        <p class="text-sm text-gray-500">Perkembangan teknologi</p>
+      </a>
+
+      <!-- Card Portofolio -->
+      <a href="/portofolio/index.html"
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-600 transition">
+          <svg class="w-6 h-6 text-purple-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-800 mb-1">Portofolio</h3>
+        <p class="text-sm text-gray-500">Penelitian & jurnal</p>
+      </a>
+
+      <!-- Card CV -->
+      <a href="/cv.html"
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-500 transition">
+          <svg class="w-6 h-6 text-orange-500 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-800 mb-1">CV Online</h3>
+        <p class="text-sm text-gray-500">Curriculum vitae</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- BLOG TERBARU (placeholder) -->
+  <!-- ================================================ -->
+  <section class="bg-white py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-800">Blog Terbaru</h2>
+        <a href="/blog/index.html" class="text-sm text-primary hover:underline">Lihat semua →</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card Blog Placeholder -->
+        <div class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition">
+          <div class="bg-gray-200 h-40 flex items-center justify-center">
+            <span class="text-gray-400 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs text-primary font-medium bg-blue-50 px-2 py-1 rounded">Jaringan</span>
+            <h3 class="font-semibold text-gray-800 mt-3 mb-2">Judul Artikel Blog</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Deskripsi singkat artikel blog akan tampil di sini setelah konten ditambahkan.</p>
+            <p class="text-xs text-gray-400 mt-3">1 Januari 2025</p>
+          </div>
+        </div>
+
+        <!-- Duplikat placeholder -->
+        <div class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition">
+          <div class="bg-gray-200 h-40 flex items-center justify-center">
+            <span class="text-gray-400 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs text-green-600 font-medium bg-green-50 px-2 py-1 rounded">Teknologi</span>
+            <h3 class="font-semibold text-gray-800 mt-3 mb-2">Judul Artikel Blog</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Deskripsi singkat artikel blog akan tampil di sini setelah konten ditambahkan.</p>
+            <p class="text-xs text-gray-400 mt-3">1 Januari 2025</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition">
+          <div class="bg-gray-200 h-40 flex items-center justify-center">
+            <span class="text-gray-400 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs text-purple-600 font-medium bg-purple-50 px-2 py-1 rounded">AI</span>
+            <h3 class="font-semibold text-gray-800 mt-3 mb-2">Judul Artikel Blog</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Deskripsi singkat artikel blog akan tampil di sini setelah konten ditambahkan.</p>
+            <p class="text-xs text-gray-400 mt-3">1 Januari 2025</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- FOOTER -->
+  <!-- ================================================ -->
+  <footer class="bg-secondary text-white py-10 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <p class="font-bold text-lg">Boibanet</p>
+        <p class="text-blue-200 text-sm mt-1">Dosen Jaringan Komputer — UNIPA</p>
+      </div>
+      <div class="flex gap-6 text-sm text-blue-200">
+        <a href="/profil.html" class="hover:text-white transition">Profil</a>
+        <a href="/blog/index.html" class="hover:text-white transition">Blog</a>
+        <a href="/kontak.html" class="hover:text-white transition">Kontak</a>
+      </div>
+      <p class="text-blue-300 text-xs">© 2025 Boibanet. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ================================================ -->
+  <!-- SCRIPT -->
+  <!-- ================================================ -->
+  <script>
+    // Toggle mobile menu
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
