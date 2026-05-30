@@ -3,38 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boibanet</title>
+  <title>Boibanet - Web Dosen</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo-Photoroom.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            primary: '#1e40af',
-            secondary: '#1e3a5f',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          }
+          colors: { primary: '#1e40af', secondary: '#1e3a5f' },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
         }
       }
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @keyframes zoomBg {
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+    .hero-video { animation: zoomBg 10s ease-out forwards; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up-1 { animation: fadeUp 0.8s ease forwards 0.2s; opacity: 0; }
+    .fade-up-2 { animation: fadeUp 0.8s ease forwards 0.45s; opacity: 0; }
+    .fade-up-3 { animation: fadeUp 0.8s ease forwards 0.7s; opacity: 0; }
+  </style>
 </head>
-
 <body class="bg-gray-50 font-sans">
 
   <!-- NAVBAR -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-
-      <!-- Logo -->
-      <a href="/">
-        <img src="/assets/img/logo-Photoroom.png" alt="Boibanet Logo" class="h-10 w-auto">
-      </a>
-
-      <!-- Menu Desktop -->
+      <a href="/"><img src="/assets/img/logo-Photoroom.png" alt="Boibanet" class="h-10 w-auto"></a>
       <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
         <li><a href="/" class="text-primary border-b-2 border-primary pb-1">Home</a></li>
         <li><a href="/profil.html" class="hover:text-primary transition">Profil</a></li>
@@ -44,72 +47,43 @@
         <li><a href="/cv.html" class="hover:text-primary transition">CV</a></li>
         <li><a href="/kontak.html" class="hover:text-primary transition">Kontak</a></li>
       </ul>
-
-      <!-- Hamburger Mobile -->
-      <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+      <button id="menu-toggle" class="md:hidden text-gray-600">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
-
-    <!-- Menu Mobile -->
     <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
       <ul class="flex flex-col gap-3 text-sm font-medium text-gray-600">
-        <li><a href="/" class="text-primary">Home</a></li>
-        <li><a href="/profil.html" class="hover:text-primary">Profil</a></li>
-        <li><a href="/materi/index.html" class="hover:text-primary">Materi</a></li>
-        <li><a href="/blog/index.html" class="hover:text-primary">Blog</a></li>
-        <li><a href="/portofolio/index.html" class="hover:text-primary">Portofolio</a></li>
-        <li><a href="/cv.html" class="hover:text-primary">CV</a></li>
-        <li><a href="/kontak.html" class="hover:text-primary">Kontak</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/profil.html">Profil</a></li>
+        <li><a href="/materi/index.html">Materi</a></li>
+        <li><a href="/blog/index.html">Blog</a></li>
+        <li><a href="/portofolio/index.html">Portofolio</a></li>
+        <li><a href="/cv.html">CV</a></li>
+        <li><a href="/kontak.html">Kontak</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO dengan Video Background -->
-  <section class="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
-
-    <!-- Video BG -->
-    <video
-      class="absolute inset-0 w-full h-full object-cover"
-      autoplay muted loop playsinline
-      src="/assets/img/bg/bg-video.mp4">
-    </video>
-
-    <!-- Overlay gelap -->
-    <div class="absolute inset-0 bg-black/60"></div>
-
-    <!-- Konten Hero -->
-    <div class="relative z-10 text-center text-white px-4 max-w-2xl mx-auto">
-      <p class="text-blue-300 text-sm font-medium tracking-widest uppercase mb-4">Selamat Datang</p>
+  <!-- HERO -->
+  <section class="relative h-[70vh] min-h-[420px] max-h-[600px] flex items-center justify-center overflow-hidden">
+    <video class="hero-video absolute inset-0 w-full h-full object-cover"
+      autoplay muted loop playsinline src="/assets/img/bg/bg-video.mp4"></video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black/70"></div>
+    <div class="relative z-10 text-white px-6 max-w-3xl w-full">
       <h1 class="fade-up-1 text-3xl md:text-5xl font-bold leading-tight mb-4">
         Dari Kelas ke Dunia Nyata.<br>
         <span class="text-blue-300">Teknologi yang Relevan.</span>
-        </h1>
-
-        <p class="fade-up-2 text-gray-300 text-sm md:text-base max-w-xl leading-relaxed mb-7">
+      </h1>
+      <p class="fade-up-2 text-gray-300 text-sm md:text-base max-w-xl leading-relaxed mb-7">
         Materi kuliah, riset, dan ulasan teknologi digital terkini —
         dikurasi untuk mahasiswa yang ingin belajar lebih dari sekadar teori.
-        </p>
-      <div class="flex gap-4 justify-center">
-        <a href="/materi/index.html"
-          class="bg-primary text-white font-semibold px-6 py-2.5 rounded-lg text-sm hover:bg-blue-700 transition">
-          Lihat Materi
-        </a>
-        <a href="/blog/index.html"
-          class="border border-white text-white font-semibold px-6 py-2.5 rounded-lg text-sm hover:bg-white hover:text-gray-900 transition">
-          Baca Blog
-        </a>
+      </p>
+      <div class="fade-up-3 flex flex-wrap gap-3">
+        <a href="/materi/index.html" class="bg-primary text-white font-semibold px-6 py-2.5 rounded-lg text-sm hover:bg-blue-700 transition">Jelajahi Materi</a>
+        <a href="/blog/index.html" class="border border-white/50 text-white font-medium px-6 py-2.5 rounded-lg text-sm hover:border-white hover:bg-white/10 transition">Baca Blog →</a>
       </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-      </svg>
     </div>
   </section>
 
@@ -117,102 +91,78 @@
   <section class="max-w-6xl mx-auto px-4 py-16">
     <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Konten Utama</h2>
     <p class="text-gray-500 text-sm text-center mb-10">Temukan materi, artikel, dan karya yang bisa kamu akses</p>
-
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-      <a href="/materi/index.html"
-        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+      <a href="/materi/index.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
         <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition">
           <svg class="w-6 h-6 text-primary group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-800 mb-1">Materi Kuliah</h3>
         <p class="text-sm text-gray-500">D3 & S1 Jaringan Komputer</p>
       </a>
-
-      <a href="/blog/index.html"
-        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+      <a href="/blog/index.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
         <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-600 transition">
           <svg class="w-6 h-6 text-green-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-800 mb-1">Blog</h3>
         <p class="text-sm text-gray-500">Perkembangan teknologi</p>
       </a>
-
-      <a href="/portofolio/index.html"
-        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+      <a href="/portofolio/index.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
         <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-600 transition">
           <svg class="w-6 h-6 text-purple-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-800 mb-1">Portofolio</h3>
         <p class="text-sm text-gray-500">Penelitian & jurnal</p>
       </a>
-
-      <a href="/cv.html"
-        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+      <a href="/cv.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
         <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-500 transition">
           <svg class="w-6 h-6 text-orange-500 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-800 mb-1">CV Online</h3>
         <p class="text-sm text-gray-500">Curriculum vitae</p>
       </a>
-
     </div>
   </section>
 
-  <!-- BLOG TERBARU -->
+  <!-- BLOG TERBARU — dari Firestore -->
   <section class="bg-white py-16 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="flex justify-between items-center mb-8">
         <h2 class="text-2xl font-bold text-gray-800">Blog Terbaru</h2>
         <a href="/blog/index.html" class="text-sm text-primary hover:underline">Lihat semua →</a>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition">
-          <div class="bg-gray-100 h-40 flex items-center justify-center">
-            <span class="text-gray-400 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-5">
-            <span class="text-xs text-primary font-medium bg-blue-50 px-2 py-1 rounded">Jaringan</span>
-            <h3 class="font-semibold text-gray-800 mt-3 mb-2">Judul Artikel Blog</h3>
-            <p class="text-sm text-gray-500 leading-relaxed">Deskripsi singkat artikel akan tampil di sini.</p>
-            <p class="text-xs text-gray-400 mt-3">1 Januari 2025</p>
+      <!-- Container diisi JS -->
+      <div id="blog-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Skeleton loading -->
+        <div class="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
+          <div class="bg-gray-200 h-40"></div>
+          <div class="p-5 space-y-3">
+            <div class="h-3 bg-gray-200 rounded w-1/3"></div>
+            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div class="h-3 bg-gray-200 rounded w-full"></div>
           </div>
         </div>
-
-        <div class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition">
-          <div class="bg-gray-100 h-40 flex items-center justify-center">
-            <span class="text-gray-400 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-5">
-            <span class="text-xs text-green-600 font-medium bg-green-50 px-2 py-1 rounded">Teknologi</span>
-            <h3 class="font-semibold text-gray-800 mt-3 mb-2">Judul Artikel Blog</h3>
-            <p class="text-sm text-gray-500 leading-relaxed">Deskripsi singkat artikel akan tampil di sini.</p>
-            <p class="text-xs text-gray-400 mt-3">1 Januari 2025</p>
+        <div class="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
+          <div class="bg-gray-200 h-40"></div>
+          <div class="p-5 space-y-3">
+            <div class="h-3 bg-gray-200 rounded w-1/3"></div>
+            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div class="h-3 bg-gray-200 rounded w-full"></div>
           </div>
         </div>
-
-        <div class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition">
-          <div class="bg-gray-100 h-40 flex items-center justify-center">
-            <span class="text-gray-400 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-5">
-            <span class="text-xs text-purple-600 font-medium bg-purple-50 px-2 py-1 rounded">AI</span>
-            <h3 class="font-semibold text-gray-800 mt-3 mb-2">Judul Artikel Blog</h3>
-            <p class="text-sm text-gray-500 leading-relaxed">Deskripsi singkat artikel akan tampil di sini.</p>
-            <p class="text-xs text-gray-400 mt-3">1 Januari 2025</p>
+        <div class="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
+          <div class="bg-gray-200 h-40"></div>
+          <div class="p-5 space-y-3">
+            <div class="h-3 bg-gray-200 rounded w-1/3"></div>
+            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div class="h-3 bg-gray-200 rounded w-full"></div>
           </div>
         </div>
       </div>
@@ -236,12 +186,92 @@
   </footer>
 
   <script>
-    const toggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    toggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+    // Mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
     });
   </script>
 
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+    import { getFirestore, collection, query, where, orderBy, limit, getDocs }
+      from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCeE108oCH5F9hyGTLRmZu3bRW8ZxB3AbU",
+      authDomain: "boibanet-f144c.firebaseapp.com",
+      projectId: "boibanet-f144c",
+      storageBucket: "boibanet-f144c.firebasestorage.app",
+      messagingSenderId: "511701615381",
+      appId: "1:511701615381:web:6c88c535ea817e941b5f1c"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Warna badge per kategori
+    const badgeColor = {
+      'Jaringan': 'text-primary bg-blue-50',
+      'Teknologi': 'text-green-600 bg-green-50',
+      'AI': 'text-purple-600 bg-purple-50',
+      'default': 'text-gray-600 bg-gray-100'
+    };
+
+    async function loadBlog() {
+      const container = document.getElementById('blog-container');
+      try {
+        const q = query(
+          collection(db, 'blog'),
+          where('status', '==', 'published'),
+          orderBy('tanggal', 'desc'),
+          limit(3)
+        );
+        const snap = await getDocs(q);
+
+        if (snap.empty) {
+          container.innerHTML = `
+            <div class="col-span-3 text-center py-10 text-gray-400 text-sm">
+              Belum ada artikel blog.
+            </div>`;
+          return;
+        }
+
+        container.innerHTML = '';
+        snap.forEach(doc => {
+          const d = doc.data();
+          const badge = badgeColor[d.kategori] || badgeColor['default'];
+          const tanggal = d.tanggal
+            ? new Date(d.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
+            : '';
+          const thumb = d.thumbnail
+            ? `<img src="${d.thumbnail}" class="w-full h-full object-cover" alt="${d.judul}">`
+            : `<div class="w-full h-full bg-gray-100 flex items-center justify-center">
+                <span class="text-gray-400 text-sm">No Image</span>
+               </div>`;
+
+          container.innerHTML += `
+            <a href="/blog/detail.html?id=${doc.id}"
+              class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition block">
+              <div class="h-40 overflow-hidden">${thumb}</div>
+              <div class="p-5">
+                <span class="text-xs font-medium px-2 py-1 rounded ${badge}">${d.kategori || 'Umum'}</span>
+                <h3 class="font-semibold text-gray-800 mt-3 mb-2 line-clamp-2">${d.judul || 'Tanpa Judul'}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">${d.konten || ''}</p>
+                <p class="text-xs text-gray-400 mt-3">${tanggal}</p>
+              </div>
+            </a>`;
+        });
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = `
+          <div class="col-span-3 text-center py-10 text-gray-400 text-sm">
+            Gagal memuat blog.
+          </div>`;
+      }
+    }
+
+    loadBlog();
+  </script>
 </body>
 </html>
