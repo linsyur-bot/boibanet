@@ -1,14 +1,16 @@
 // assets/js/controllers/BlogController.js
-// ================================================
-// CONTROLLER — BlogController
-// Tugasnya: proses data dari Model → siap tampil di View
-// ================================================
-
 import BlogModel from "../models/BlogModel.js";
+
+// Konversi URL Google Drive → worker proxy (sama seperti ProfilController)
+function toProxyUrl(url) {
+  if (!url) return '';
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (match) return `/gdrive-img?id=${match[1]}`;
+  return url;
+}
 
 const BlogController = {
 
-  // Untuk blog/index.html — daftar semua artikel
   async getArtikel(kategoriFilter = null) {
     try {
       let data;
@@ -19,6 +21,7 @@ const BlogController = {
       }
       return data.map(item => ({
         ...item,
+        thumbnail:        toProxyUrl(item.thumbnail),   // ← tambahan
         tanggalFormatted: BlogController.formatTanggal(item.tanggal),
         excerptText:      BlogController.stripHtml(item.konten, 120)
       }));
@@ -28,13 +31,13 @@ const BlogController = {
     }
   },
 
-  // Untuk blog/post.html — detail satu artikel
   async getDetail(id) {
     try {
       const data = await BlogModel.getById(id);
       if (!data) return null;
       return {
         ...data,
+        thumbnail:        toProxyUrl(data.thumbnail),   // ← tambahan
         tanggalFormatted: BlogController.formatTanggal(data.tanggal)
       };
     } catch (e) {
@@ -43,12 +46,12 @@ const BlogController = {
     }
   },
 
-  // Untuk home — artikel terbaru
   async getLatest(n = 3) {
     try {
       const data = await BlogModel.getLatest(n);
       return data.map(item => ({
         ...item,
+        thumbnail:        toProxyUrl(item.thumbnail),   // ← tambahan
         tanggalFormatted: BlogController.formatTanggal(item.tanggal),
         excerptText:      BlogController.stripHtml(item.konten, 100)
       }));
@@ -58,7 +61,6 @@ const BlogController = {
     }
   },
 
-  // Format tanggal → "12 Januari 2025"
   formatTanggal(tanggal) {
     if (!tanggal) return "-";
     const bulan = [
@@ -69,7 +71,6 @@ const BlogController = {
     return `${d.getDate()} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
   },
 
-  // Strip HTML → plain text untuk excerpt
   stripHtml(html, maxLength = 100) {
     if (!html) return "";
     const text = html.replace(/<[^>]+>/g, "");
@@ -78,7 +79,6 @@ const BlogController = {
       : text;
   },
 
-  // Warna badge kategori
   badgeKategori(kategori) {
     const map = {
       "Jaringan":  "bg-blue-100 text-blue-700",
