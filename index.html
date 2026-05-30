@@ -37,71 +37,96 @@
 
   <div include="/assets/components/header.html"></div>
 
+  <!-- ================================================ -->
   <!-- HERO -->
+  <!-- ================================================ -->
   <section class="relative h-screen flex items-center justify-center overflow-hidden">
-  <video class="hero-video absolute inset-0 w-full h-full object-cover"
-    autoplay muted loop playsinline src="/assets/img/bg/bg-video.mp4"></video>
-  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black/70"></div>
-  <div class="relative z-10 text-white px-6 max-w-2xl w-full mx-auto md:mx-0 md:ml-20">
-    <h1 class="fade-up-1 text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-      Berbagi Wawasan
-      <span class="text-blue-300">Teknologi Informasi dan Komunikasi.</span>
-    </h1>
-    <p class="fade-up-2 text-gray-300 text-sm md:text-base max-w-md leading-relaxed mb-7">
-      Artikel, materi, dan berbagai pembahasan seputar teknologi informasi dan komunikasi.
-    </p>
-    <div class="fade-up-3 flex flex-wrap gap-3">
-      <a href="/materi/index.html" class="bg-primary text-white font-semibold px-6 py-2.5 rounded-lg text-sm hover:bg-blue-700 transition">Jelajahi Materi</a>
-      <a href="/blog/index.html" class="border border-white/50 text-white font-medium px-6 py-2.5 rounded-lg text-sm hover:border-white hover:bg-white/10 transition">Baca Blog →</a>
+    <video class="hero-video absolute inset-0 w-full h-full object-cover"
+      autoplay muted loop playsinline src="/assets/img/bg/bg-video.mp4"></video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black/70"></div>
+    <div class="relative z-10 text-white px-6 max-w-2xl w-full mx-auto md:mx-0 md:ml-20">
+      <h1 class="fade-up-1 text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+        Berbagi Wawasan
+        <span class="text-blue-300">Teknologi Informasi dan Komunikasi.</span>
+      </h1>
+      <p class="fade-up-2 text-gray-300 text-sm md:text-base max-w-md leading-relaxed mb-7">
+        Artikel, materi, dan berbagai pembahasan seputar teknologi informasi dan komunikasi.
+      </p>
+      <div class="fade-up-3 flex flex-wrap gap-3">
+        <a href="/materi/index.html"
+          class="bg-primary text-white font-semibold px-6 py-2.5 rounded-lg text-sm hover:bg-blue-700 transition">
+          Jelajahi Materi
+        </a>
+        <a href="/blog/index.html"
+          class="border border-white/50 text-white font-medium px-6 py-2.5 rounded-lg text-sm hover:border-white hover:bg-white/10 transition">
+          Baca Blog →
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- ================================================ -->
   <!-- HIGHLIGHT KONTEN -->
+  <!-- ================================================ -->
   <section class="max-w-6xl mx-auto px-4 py-16">
     <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Konten Utama</h2>
     <p class="text-gray-500 text-sm text-center mb-10">Temukan materi, artikel, dan karya yang bisa kamu akses</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <a href="/materi/index.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+
+      <a href="/materi/index.html"
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
         <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition">
           <svg class="w-6 h-6 text-primary group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-800 mb-1">Materi Kuliah</h3>
         <p class="text-sm text-gray-500">D3 & S1 Jaringan Komputer</p>
       </a>
-      <a href="/blog/index.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+
+      <a href="/blog/index.html"
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
         <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-600 transition">
           <svg class="w-6 h-6 text-green-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-800 mb-1">Blog</h3>
         <p class="text-sm text-gray-500">Perkembangan teknologi</p>
       </a>
-      <a href="/portofolio/index.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+
+      <a href="/portofolio/index.html"
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
         <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-600 transition">
           <svg class="w-6 h-6 text-purple-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-800 mb-1">Portofolio</h3>
         <p class="text-sm text-gray-500">Penelitian & jurnal</p>
       </a>
-      <a href="/cv.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
+
+      <a href="/cv.html"
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition group">
         <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-500 transition">
           <svg class="w-6 h-6 text-orange-500 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
         </div>
         <h3 class="font-semibold text-gray-800 mb-1">CV Online</h3>
         <p class="text-sm text-gray-500">Curriculum vitae</p>
       </a>
+
     </div>
   </section>
 
+  <!-- ================================================ -->
   <!-- BLOG TERBARU -->
+  <!-- ================================================ -->
   <section class="bg-white py-16 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="flex justify-between items-center mb-8">
@@ -109,6 +134,7 @@
         <a href="/blog/index.html" class="text-sm text-primary hover:underline">Lihat semua →</a>
       </div>
       <div id="blog-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Skeleton Loading -->
         <div class="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
           <div class="bg-gray-200 h-40"></div>
           <div class="p-5 space-y-3">
@@ -139,75 +165,54 @@
 
   <div include="/assets/components/footer.html"></div>
 
+  <!-- ================================================ -->
+  <!-- SCRIPT -->
+  <!-- ================================================ -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-    import { getFirestore, collection, query, where, orderBy, limit, getDocs }
-      from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+    import BlogController from "/assets/js/controllers/BlogController.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCeE108oCH5F9hyGTLRmZu3bRW8ZxB3AbU",
-      authDomain: "boibanet-f144c.firebaseapp.com",
-      projectId: "boibanet-f144c",
-      storageBucket: "boibanet-f144c.firebasestorage.app",
-      messagingSenderId: "511701615381",
-      appId: "1:511701615381:web:6c88c535ea817e941b5f1c"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    const badgeColor = {
-      'Jaringan': 'text-primary bg-blue-50',
-      'Teknologi': 'text-green-600 bg-green-50',
-      'AI': 'text-purple-600 bg-purple-50',
-      'default': 'text-gray-600 bg-gray-100'
-    };
-
-    async function loadBlog() {
+    async function loadBlogTerbaru() {
       const container = document.getElementById('blog-container');
       try {
-        const q = query(
-          collection(db, 'blog'),
-          where('status', '==', 'published'),
-          orderBy('tanggal', 'desc'),
-          limit(3)
-        );
-        const snap = await getDocs(q);
+        const data = await BlogController.getLatest(3);
 
-        if (snap.empty) {
-          container.innerHTML = `<div class="col-span-3 text-center py-10 text-gray-400 text-sm">Belum ada artikel blog.</div>`;
+        if (data.length === 0) {
+          container.innerHTML = `
+            <div class="col-span-3 text-center py-10 text-gray-400 text-sm">
+              Belum ada artikel blog.
+            </div>`;
           return;
         }
 
-        container.innerHTML = '';
-        snap.forEach(doc => {
-          const d = doc.data();
-          const badge = badgeColor[d.kategori] || badgeColor['default'];
-          const tanggal = d.tanggal
-            ? new Date(d.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
-            : '';
-          const thumb = d.thumbnail
-            ? `<img src="${d.thumbnail}" class="w-full h-full object-cover" alt="${d.judul}">`
-            : `<div class="w-full h-full bg-gray-100 flex items-center justify-center"><span class="text-gray-400 text-sm">No Image</span></div>`;
+        container.innerHTML = data.map(a => `
+          <a href="/blog/post.html?id=${a.id}"
+            class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition block">
+            <div class="h-40 overflow-hidden bg-gray-100">
+              ${a.thumbnail
+                ? `<img src="${a.thumbnail}" class="w-full h-full object-cover" alt="${a.judul}">`
+                : `<div class="w-full h-full flex items-center justify-center text-gray-300 text-sm">No Image</div>`
+              }
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-medium px-2 py-1 rounded ${BlogController.badgeKategori(a.kategori)}">
+                ${a.kategori}
+              </span>
+              <h3 class="font-semibold text-gray-800 mt-3 mb-2 line-clamp-2">${a.judul}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">${a.excerptText}</p>
+              <p class="text-xs text-gray-400 mt-3">${a.tanggalFormatted}</p>
+            </div>
+          </a>
+        `).join('');
 
-          container.innerHTML += `
-            <a href="/blog/post.html?id=${doc.id}" class="rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition block">
-              <div class="h-40 overflow-hidden">${thumb}</div>
-              <div class="p-5">
-                <span class="text-xs font-medium px-2 py-1 rounded ${badge}">${d.kategori || 'Umum'}</span>
-                <h3 class="font-semibold text-gray-800 mt-3 mb-2 line-clamp-2">${d.judul || 'Tanpa Judul'}</h3>
-                <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">${d.konten || ''}</p>
-                <p class="text-xs text-gray-400 mt-3">${tanggal}</p>
-              </div>
-            </a>`;
-        });
-      } catch (err) {
-        console.error(err);
-        container.innerHTML = `<div class="col-span-3 text-center py-10 text-gray-400 text-sm">Gagal memuat blog.</div>`;
+      } catch(e) {
+        container.innerHTML = `
+          <div class="col-span-3 text-center py-10 text-gray-400 text-sm">
+            Gagal memuat blog.
+          </div>`;
       }
     }
 
-    loadBlog();
+    loadBlogTerbaru();
   </script>
 
 </body>

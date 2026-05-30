@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artikel — Boibanet</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo-Photoroom.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#1e40af', secondary: '#1e3a5f' },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="/assets/js/include.js" defer></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .artikel-konten h1 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+    .artikel-konten h2 { font-size: 1.25rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+    .artikel-konten h3 { font-size: 1.1rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+    .artikel-konten p  { margin-bottom: 1rem; line-height: 1.75; color: #374151; }
+    .artikel-konten ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .artikel-konten ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .artikel-konten li { margin-bottom: 0.25rem; line-height: 1.75; color: #374151; }
+    .artikel-konten blockquote { border-left: 4px solid #1e40af; padding-left: 1rem; color: #6b7280; margin: 1rem 0; }
+    .artikel-konten pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; }
+    .artikel-konten code { font-family: monospace; font-size: 0.875rem; }
+    .artikel-konten a { color: #1e40af; text-decoration: underline; }
+    .artikel-konten img { max-width: 100%; border-radius: 8px; margin: 1rem 0; }
+  </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <div include="/assets/components/header.html"></div>
+
+  <!-- KONTEN ARTIKEL -->
+  <main class="max-w-3xl mx-auto px-4 py-12 flex-1 w-full">
+
+    <!-- Kembali -->
+    <a href="/blog/index.html"
+      class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary mb-8 transition">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Kembali ke Blog
+    </a>
+
+    <!-- Skeleton Loading -->
+    <div id="artikel-loading" class="space-y-4 animate-pulse">
+      <div class="h-4 bg-gray-200 rounded w-1/4"></div>
+      <div class="h-8 bg-gray-200 rounded w-3/4"></div>
+      <div class="h-4 bg-gray-200 rounded w-1/4"></div>
+      <div class="h-56 bg-gray-200 rounded-xl"></div>
+      <div class="space-y-3 pt-4">
+        <div class="h-3 bg-gray-200 rounded w-full"></div>
+        <div class="h-3 bg-gray-200 rounded w-full"></div>
+        <div class="h-3 bg-gray-200 rounded w-3/4"></div>
+      </div>
+    </div>
+
+    <!-- Konten -->
+    <article id="artikel-konten" class="hidden">
+      <div id="artikel-header" class="mb-6"></div>
+      <div id="artikel-thumbnail" class="mb-8"></div>
+      <div id="artikel-isi" class="artikel-konten"></div>
+    </article>
+
+    <!-- Error -->
+    <div id="artikel-error" class="hidden text-center py-16">
+      <p class="text-gray-400 text-sm mb-4">Artikel tidak ditemukan.</p>
+      <a href="/blog/index.html" class="text-sm text-primary hover:underline">← Kembali ke Blog</a>
+    </div>
+
+  </main>
+
+  <div include="/assets/components/footer.html"></div>
+
+  <script type="module">
+    import BlogController from "/assets/js/controllers/BlogController.js";
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    async function loadArtikel() {
+      if (!id) { showError(); return; }
+
+      const data = await BlogController.getDetail(id);
+      if (!data) { showError(); return; }
+
+      // Update title
+      document.title = `${data.judul} — Boibanet`;
+
+      // Header
+      document.getElementById('artikel-header').innerHTML = `
+        <span class="text-xs font-medium px-2 py-1 rounded ${BlogController.badgeKategori(data.kategori)}">
+          ${data.kategori}
+        </span>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mt-4 mb-3 leading-snug">
+          ${data.judul}
+        </h1>
+        <p class="text-sm text-gray-400">${data.tanggalFormatted}</p>
+        <hr class="mt-4 border-gray-100">
+      `;
+
+      // Thumbnail
+      if (data.thumbnail) {
+        document.getElementById('artikel-thumbnail').innerHTML = `
+          <img src="${data.thumbnail}" alt="${data.judul}"
+            class="w-full rounded-xl object-cover max-h-80">
+        `;
+      }
+
+      // Isi
+      document.getElementById('artikel-isi').innerHTML = data.konten || '';
+
+      // Tampilkan
+      document.getElementById('artikel-loading').classList.add('hidden');
+      document.getElementById('artikel-konten').classList.remove('hidden');
+    }
+
+    function showError() {
+      document.getElementById('artikel-loading').classList.add('hidden');
+      document.getElementById('artikel-error').classList.remove('hidden');
+    }
+
+    loadArtikel();
+  </script>
+
+</body>
+</html>

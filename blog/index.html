@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Boibanet</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo-Photoroom.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#1e40af', secondary: '#1e3a5f' },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="/assets/js/include.js" defer></script>
+  <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <div include="/assets/components/header.html"></div>
+
+  <!-- HEADER HALAMAN -->
+  <section class="bg-gradient-to-br from-primary to-secondary text-white py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-3xl font-bold mb-2">Blog</h1>
+      <p class="text-blue-100">Perkembangan teknologi & jaringan komputer</p>
+    </div>
+  </section>
+
+  <!-- FILTER KATEGORI -->
+  <section class="max-w-6xl mx-auto px-4 py-6">
+    <div class="flex gap-2 flex-wrap">
+      <button onclick="filterKategori(null)"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border bg-primary border-primary text-white transition"
+        data-kat="semua">Semua</button>
+      <button onclick="filterKategori('Jaringan')"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition"
+        data-kat="Jaringan">Jaringan</button>
+      <button onclick="filterKategori('Teknologi')"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition"
+        data-kat="Teknologi">Teknologi</button>
+      <button onclick="filterKategori('AI')"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition"
+        data-kat="AI">AI</button>
+      <button onclick="filterKategori('Umum')"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition"
+        data-kat="Umum">Umum</button>
+    </div>
+  </section>
+
+  <!-- DAFTAR ARTIKEL -->
+  <section class="max-w-6xl mx-auto px-4 pb-16 flex-1">
+    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Skeleton Loading -->
+      <div class="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
+        <div class="bg-gray-200 h-44"></div>
+        <div class="p-5 space-y-3">
+          <div class="h-3 bg-gray-200 rounded w-1/3"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+          <div class="h-3 bg-gray-200 rounded w-full"></div>
+        </div>
+      </div>
+      <div class="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
+        <div class="bg-gray-200 h-44"></div>
+        <div class="p-5 space-y-3">
+          <div class="h-3 bg-gray-200 rounded w-1/3"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+          <div class="h-3 bg-gray-200 rounded w-full"></div>
+        </div>
+      </div>
+      <div class="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
+        <div class="bg-gray-200 h-44"></div>
+        <div class="p-5 space-y-3">
+          <div class="h-3 bg-gray-200 rounded w-1/3"></div>
+          <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+          <div class="h-3 bg-gray-200 rounded w-full"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div include="/assets/components/footer.html"></div>
+
+  <script type="module">
+    import BlogController from "/assets/js/controllers/BlogController.js";
+
+    async function loadArtikel(kategori = null) {
+      const grid = document.getElementById('blog-grid');
+
+      const data = await BlogController.getArtikel(kategori);
+
+      if (data.length === 0) {
+        grid.innerHTML = '<div class="col-span-3 text-center py-16 text-gray-400 text-sm">Belum ada artikel.</div>';
+        return;
+      }
+
+      grid.innerHTML = data.map(a => `
+        <a href="/blog/post.html?id=${a.id}"
+          class="bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-md transition group">
+          <div class="h-44 overflow-hidden bg-gray-100">
+            ${a.thumbnail
+              ? `<img src="${a.thumbnail}" alt="${a.judul}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-300">`
+              : `<div class="w-full h-full flex items-center justify-center text-gray-300 text-sm">No Image</div>`
+            }
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-medium px-2 py-1 rounded ${BlogController.badgeKategori(a.kategori)}">
+              ${a.kategori}
+            </span>
+            <h3 class="font-semibold text-gray-800 mt-3 mb-2 leading-snug">${a.judul}</h3>
+            <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">${a.excerptText}</p>
+            <p class="text-xs text-gray-400 mt-3">${a.tanggalFormatted}</p>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    window.filterKategori = (kat) => {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-white', 'border-primary');
+        btn.classList.add('border-gray-300', 'text-gray-600');
+      });
+      const active = document.querySelector(`[data-kat="${kat || 'semua'}"]`);
+      if (active) {
+        active.classList.add('bg-primary', 'text-white', 'border-primary');
+        active.classList.remove('border-gray-300', 'text-gray-600');
+      }
+      loadArtikel(kat);
+    };
+
+    loadArtikel();
+  </script>
+
+</body>
+</html>
