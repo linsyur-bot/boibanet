@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil — Boibanet</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo-Photoroom.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{primary:'#1e40af',secondary:'#1e3a5f'},fontFamily:{sans:['Inter','sans-serif']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- NAVBAR -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/"><img src="/assets/img/logo-Photoroom.png" alt="Boibanet" class="h-10 w-auto"></a>
+      <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+        <li><a href="/" class="hover:text-primary transition">Home</a></li>
+        <li><a href="/profil.html" class="text-primary border-b-2 border-primary pb-1">Profil</a></li>
+        <li><a href="/materi/index.html" class="hover:text-primary transition">Materi</a></li>
+        <li><a href="/blog/index.html" class="hover:text-primary transition">Blog</a></li>
+        <li><a href="/portofolio/index.html" class="hover:text-primary transition">Portofolio</a></li>
+        <li><a href="/cv.html" class="hover:text-primary transition">CV</a></li>
+        <li><a href="/kontak.html" class="hover:text-primary transition">Kontak</a></li>
+      </ul>
+      <button id="menu-toggle" class="md:hidden text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
+      <ul class="flex flex-col gap-3 text-sm font-medium text-gray-600">
+        <li><a href="/">Home</a></li>
+        <li><a href="/profil.html" class="text-primary">Profil</a></li>
+        <li><a href="/materi/index.html">Materi</a></li>
+        <li><a href="/blog/index.html">Blog</a></li>
+        <li><a href="/portofolio/index.html">Portofolio</a></li>
+        <li><a href="/cv.html">CV</a></li>
+        <li><a href="/kontak.html">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="bg-gradient-to-br from-primary to-secondary text-white py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-2xl md:text-3xl font-bold">Profil</h1>
+      <p class="text-blue-200 text-sm mt-1">Tentang saya dan latar belakang akademik</p>
+    </div>
+  </div>
+
+  <!-- KONTEN PROFIL -->
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <div id="profil-loading" class="flex gap-8 flex-col md:flex-row animate-pulse">
+      <div class="w-40 h-40 rounded-full bg-gray-200 flex-shrink-0 mx-auto md:mx-0"></div>
+      <div class="flex-1 space-y-4 pt-4">
+        <div class="h-6 bg-gray-200 rounded w-1/3"></div>
+        <div class="h-4 bg-gray-200 rounded w-1/4"></div>
+        <div class="h-4 bg-gray-200 rounded w-full"></div>
+        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+      </div>
+    </div>
+
+    <div id="profil-content" class="hidden">
+      <div class="flex flex-col md:flex-row gap-10 items-start">
+        <!-- Foto -->
+        <div class="flex-shrink-0 text-center">
+          <img id="p-foto" src="" alt="Foto Profil"
+            class="w-44 h-44 rounded-full object-cover border-4 border-white shadow-lg mx-auto"
+            onerror="this.src='https://ui-avatars.com/api/?name=L&background=1e40af&color=fff&size=176'">
+        </div>
+        <!-- Info -->
+        <div class="flex-1">
+          <h2 id="p-nama" class="text-2xl font-bold text-gray-800 mb-1"></h2>
+          <p id="p-institusi" class="text-primary font-medium mb-1"></p>
+          <p id="p-email" class="text-gray-500 text-sm mb-6"></p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white rounded-xl border border-gray-100 p-5">
+              <h3 class="font-semibold text-gray-700 mb-3 text-sm uppercase tracking-wide">Bidang Keahlian</h3>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>Jaringan Komputer</li>
+                <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>Software-Defined Networking (SDN)</li>
+                <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>Wireless Sensor Network (WSN)</li>
+                <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>Deep Reinforcement Learning</li>
+              </ul>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 p-5">
+              <h3 class="font-semibold text-gray-700 mb-3 text-sm uppercase tracking-wide">Pendidikan</h3>
+              <ul class="space-y-3 text-sm text-gray-600">
+                <li>
+                  <p class="font-medium text-gray-800">S2 Ilmu Komputer</p>
+                  <p class="text-gray-500">IPB University · 2023–sekarang</p>
+                </li>
+                <li>
+                  <p class="font-medium text-gray-800">S1 Teknik Informatika</p>
+                  <p class="text-gray-500">Universitas Papua · Selesai</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 bg-white rounded-xl border border-gray-100 p-5">
+            <h3 class="font-semibold text-gray-700 mb-3 text-sm uppercase tracking-wide">Tentang Saya</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Dosen aktif di Universitas Papua (UNIPA) sekaligus mahasiswa S2 Ilmu Komputer di IPB University.
+              Fokus penelitian pada adaptive routing berbasis Deep Q-Network (DQN) dalam Software-Defined Networking.
+              Mengampu mata kuliah Jaringan Komputer dan Wireless Sensor Network untuk jenjang D3 dan S1.
+            </p>
+          </div>
+
+          <div class="mt-6 flex gap-3">
+            <a href="/cv.html" class="bg-primary text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-blue-700 transition">Lihat CV</a>
+            <a href="/kontak.html" class="border border-gray-200 text-gray-700 text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-50 transition">Hubungi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-secondary text-white py-10 px-4 mt-8">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <img src="/assets/img/logo-Photoroom.png" alt="Boibanet" class="h-8 w-auto brightness-0 invert">
+        <p class="text-blue-200 text-sm">Dosen Jaringan Komputer — UNIPA</p>
+      </div>
+      <div class="flex gap-6 text-sm text-blue-200">
+        <a href="/profil.html" class="hover:text-white">Profil</a>
+        <a href="/blog/index.html" class="hover:text-white">Blog</a>
+        <a href="/kontak.html" class="hover:text-white">Kontak</a>
+      </div>
+      <p class="text-blue-300 text-xs">© 2025 Boibanet. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+    const app = initializeApp({
+      apiKey: "AIzaSyCeE108oCH5F9hyGTLRmZu3bRW8ZxB3AbU",
+      authDomain: "boibanet-f144c.firebaseapp.com",
+      projectId: "boibanet-f144c",
+      storageBucket: "boibanet-f144c.firebasestorage.app",
+      messagingSenderId: "511701615381",
+      appId: "1:511701615381:web:6c88c535ea817e941b5f1c"
+    });
+    const db = getFirestore(app);
+
+    const snap = await getDocs(collection(db, 'profil'));
+    snap.forEach(d => {
+      const p = d.data();
+      document.getElementById('p-nama').textContent      = p.nama || 'Lod Eliaser Insyur';
+      document.getElementById('p-institusi').textContent = p.institusi || 'UNIPA';
+      document.getElementById('p-email').textContent     = p.email || '';
+      if (p.foto_url) document.getElementById('p-foto').src = p.foto_url;
+    });
+    document.getElementById('profil-loading').classList.add('hidden');
+    document.getEl
