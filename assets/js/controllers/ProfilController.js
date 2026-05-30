@@ -4,7 +4,7 @@ import { getProfil } from '../models/ProfilModel.js';
 function toGdriveDirectLink(url) {
   if (!url) return '';
   const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-  if (match) return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+  if (match) return `https://drive.google.com/uc?id=${match[1]}`;
   return url;
 }
 
