@@ -1,29 +1,30 @@
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+import { getProfil } from '../models/ProfilModel.js';
 
-    if (url.pathname === '/gdrive-img') {
-      const id = url.searchParams.get('id');
-      if (!id) return new Response('Missing id', { status: 400 });
+function toProxyUrl(url) {
+  if (!url) return '';
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (match) return `/gdrive-img?id=${match[1]}`;
+  return url;
+}
 
-      const gdriveUrl = `https://drive.google.com/uc?export=view&id=${id}`;
-      const response = await fetch(gdriveUrl, {
-        headers: {
-          'Referer': 'https://drive.google.com',
-          'User-Agent': 'Mozilla/5.0'
-        }
-      });
+export async function initProfil() {
+  try {
+    const data = await getProfil();
+    if (!data) throw new Error('Data profil belum tersedia.');
 
-      const newHeaders = new Headers(response.headers);
-      newHeaders.set('Access-Control-Allow-Origin', '*');
-      newHeaders.set('Cache-Control', 'public, max-age=86400');
+    document.getElementById('p-nama').textContent      = data.nama      || '-';
+    document.getElementById('p-institusi').textContent = data.institusi || '-';
+    document.getElementById('p-email').textContent     = data.email     || '-';
+    document.getElementById('p-email').href            = 'mailto:' + (data.email || '');
+    document.getElementById('p-foto').src              = toProxyUrl(data.foto_url) || '/assets/img/logo-Photoroom.png';
 
-      return new Response(response.body, {
-        status: response.status,
-        headers: newHeaders
-      });
-    }
+    document.getElementById('skeleton').classList.add('hidden');
+    document.getElementById('profil-card').classList.remove('hidden');
 
-    return env.ASSETS.fetch(request);
+  } catch (e) {
+    document.getElementById('skeleton').classList.add('hidden');
+    const err = document.getElementById('profil-error');
+    err.textContent = e.message;
+    err.classList.remove('hidden');
   }
-};
+}

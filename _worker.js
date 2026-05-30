@@ -2,14 +2,16 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Proxy khusus path /gdrive-img?id=FILE_ID
     if (url.pathname === '/gdrive-img') {
       const id = url.searchParams.get('id');
       if (!id) return new Response('Missing id', { status: 400 });
 
       const gdriveUrl = `https://drive.google.com/uc?export=view&id=${id}`;
       const response = await fetch(gdriveUrl, {
-        headers: { 'Referer': 'https://drive.google.com' }
+        headers: {
+          'Referer': 'https://drive.google.com',
+          'User-Agent': 'Mozilla/5.0'
+        }
       });
 
       const newHeaders = new Headers(response.headers);
@@ -22,7 +24,6 @@ export default {
       });
     }
 
-    // Request lain tetap jalan normal
     return env.ASSETS.fetch(request);
   }
 };
