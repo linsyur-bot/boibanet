@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Boibanet</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo-Photoroom.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{primary:'#1e40af',secondary:'#1e3a5f'},fontFamily:{sans:['Inter','sans-serif']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- NAVBAR -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/"><img src="/assets/img/logo-Photoroom.png" alt="Boibanet" class="h-10 w-auto"></a>
+      <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+        <li><a href="/" class="hover:text-primary transition">Home</a></li>
+        <li><a href="/profil.html" class="hover:text-primary transition">Profil</a></li>
+        <li><a href="/materi/index.html" class="hover:text-primary transition">Materi</a></li>
+        <li><a href="/blog/index.html" class="hover:text-primary transition">Blog</a></li>
+        <li><a href="/portofolio/index.html" class="hover:text-primary transition">Portofolio</a></li>
+        <li><a href="/cv.html" class="text-primary border-b-2 border-primary pb-1">CV</a></li>
+        <li><a href="/kontak.html" class="hover:text-primary transition">Kontak</a></li>
+      </ul>
+      <button id="menu-toggle" class="md:hidden text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
+      <ul class="flex flex-col gap-3 text-sm text-gray-600">
+        <li><a href="/">Home</a></li>
+        <li><a href="/profil.html">Profil</a></li>
+        <li><a href="/materi/index.html">Materi</a></li>
+        <li><a href="/blog/index.html">Blog</a></li>
+        <li><a href="/portofolio/index.html">Portofolio</a></li>
+        <li><a href="/cv.html" class="text-primary">CV</a></li>
+        <li><a href="/kontak.html">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="bg-gradient-to-br from-primary to-secondary text-white py-12 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      <!-- Foto -->
+      <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-white/30 flex-shrink-0 shadow-lg">
+        <img src="/assets/img/foto-profil.jpg" alt="Lod Eliaser Insyur"
+          class="w-full h-full object-cover"
+          onerror="this.src='https://ui-avatars.com/api/?name=Lod+Eliaser&background=1e40af&color=fff&size=112'">
+      </div>
+      <!-- Info -->
+      <div class="text-center md:text-left">
+        <h1 class="text-2xl md:text-3xl font-bold">Lod Eliaser Insyur</h1>
+        <p class="text-blue-200 mt-1 text-sm">Jaringan Komputer · SDN · Deep Reinforcement Learning</p>
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-4 text-sm text-blue-100">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            eliaserlodinsyur@gmail.com
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            082297490961
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            Manokwari, Papua Barat
+          </span>
+        </div>
+      </div>
+      <!-- Download -->
+      <div class="md:ml-auto">
+        <a href="/assets/cv_lod_eliaser_insyur.pdf" download
+          class="inline-flex items-center gap-2 bg-white text-primary font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-blue-50 transition shadow">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Unduh CV
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- KONTEN CV -->
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- KOLOM KIRI -->
+      <div class="space-y-6">
+
+        <!-- Detail Pribadi -->
+        <div class="bg-white rounded-xl border border-gray-100 p-5">
+          <h2 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="w-1 h-5 bg-primary rounded-full"></span>
+            Detail Pribadi
+          </h2>
+          <ul class="space-y-3 text-sm">
+            <li>
+              <p class="text-xs text-gray-400 uppercase tracking-wide">Tanggal Lahir</p>
+              <p class="font-medium text-gray-700 mt-0.5">17 Mei 1996</p>
+            </li>
+            <li>
+              <p class="text-xs text-gray-400 uppercase tracking-wide">Tempat Lahir</p>
+              <p class="font-medium text-gray-700 mt-0.5">Biak Numfor</p>
+            </li>
+            <li>
+              <p class="text-xs text-gray-400 uppercase tracking-wide">Jenis Kelamin</p>
+              <p class="font-medium text-gray-700 mt-0.5">Laki-laki</p>
+            </li>
+            <li>
+              <p class="text-xs text-gray-400 uppercase tracking-wide">Kewarganegaraan</p>
+              <p class="font-medium text-gray-700 mt-0.5">Indonesia</p>
+            </li>
+            <li>
+              <p class="text-xs text-gray-400 uppercase tracking-wide">Status</p>
+              <p class="font-medium text-gray-700 mt-0.5">Belum Menikah</p>
+            </li>
+            <li>
+              <p class="text-xs text-gray-400 uppercase tracking-wide">LinkedIn</p>
+              <a href="https://www.linkedin.com/in/lodeliaser-insyur-67557b174/"
+                target="_blank"
+                class="text-primary text-xs hover:underline mt-0.5 block break-all">
+                linkedin.com/in/lodeliaser-insyur
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Keahlian -->
+        <div class="bg-white rounded-xl border border-gray-100 p-5">
+          <h2 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="w-1 h-5 bg-primary rounded-full"></span>
+            Keahlian
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1.5 bg-blue-50 text-primary rounded-full font-medium">Jaringan Komputer</span>
+            <span class="text-xs px-3 py-1.5 bg-blue-50 text-primary rounded-full font-medium">Software-Defined Networking</span>
+            <span class="text-xs px-3 py-1.5 bg-blue-50 text-primary rounded-full font-medium">Wireless Sensor Network</span>
+            <span class="text-xs px-3 py-1.5 bg-blue-50 text-primary rounded-full font-medium">Deep Reinforcement Learning</span>
+            <span class="text-xs px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full">Sistem Administrasi</span>
+            <span class="text-xs px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full">Microsoft Office</span>
+            <span class="text-xs px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full">Teknis Jaringan</span>
+          </div>
+        </div>
+
+        <!-- Hobi -->
+        <div class="bg-white rounded-xl border border-gray-100 p-5">
+          <h2 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="w-1 h-5 bg-primary rounded-full"></span>
+            Hobi
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1.5 bg-green-50 text-green-700 rounded-full">⚽ Sepak Bola</span>
+            <span class="text-xs px-3 py-1.5 bg-green-50 text-green-700 rounded-full">🏃 Futsal</span>
+            <span class="text-xs px-3 py-1.5 bg-green-50 text-green-700 rounded-full">🏐 Voli</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- KOLOM KANAN -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- Profil Singkat -->
+        <div class="bg-white rounded-xl border border-gray-100 p-5">
+          <h2 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+            <span class="w-1 h-5 bg-primary rounded-full"></span>
+            Profil
+          </h2>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Penerima beasiswa <span class="font-medium text-gray-800">LPDP 2023</span> jalur Afirmasi Putra/Putri Papua.
+            Saat ini menempuh studi Magister Ilmu Komputer di <span class="font-medium text-gray-800">Institut Pertanian Bogor (IPB)</span>
+            dengan fokus penelitian pada adaptive routing berbasis Deep Q-Network (DQN) dalam Software-Defined Networking (SDN).
+            Sebelumnya bertugas sebagai tenaga pengajar di Jurusan Informatika Universitas Papua sejak 2022.
+            Aktif sebagai Perwakilan Angkatan (PA) pada Persiapan Keberangkatan LPDP PK-234,
+            bertugas sebagai koordinator Publikasi dan Dokumentasi.
+          </p>
+        </div>
+
+        <!-- Pendidikan -->
+        <div class="bg-white rounded-xl border border-gray-100 p-5">
+          <h2 class="font-bold text-gray-800 mb-5 flex items-center gap-2">
+            <span class="w-1 h-5 bg-primary rounded-full"></span>
+            Pendidikan
+          </h2>
+          <div class="space-y-5">
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 rounded-full bg-primary mt-1 flex-shrink-0"></div>
+                <div class="w-px flex-1 bg-gray-200 mt-1"></div>
+              </div>
+              <div class="pb-5">
+                <div class="flex flex-wrap justify-between items-start gap-2">
+                  <div>
+                    <p class="font-semibold text-gray-800">S2 Ilmu Komputer</p>
+                    <p class="text-sm text-primary">Institut Pertanian Bogor (IPB)</p>
+                  </div>
+                  <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">Agt 2024 – Sekarang</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Beasiswa LPDP 2023 · Fokus: SDN & Deep Reinforcement Learning</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 rounded-full bg-primary mt-1 flex-shrink-0"></div>
+                <div class="w-px flex-1 bg-gray-200 mt-1"></div>
+              </div>
+              <div class="pb-5">
+                <div class="flex flex-wrap justify-between items-start gap-2">
+                  <div>
+                    <p class="font-semibold text-gray-800">S1 Teknik Informatika</p>
+                    <p class="text-sm text-primary">Universitas Papua</p>
+                  </div>
+                  <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">Jul 2016 – Agt 2022</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 rounded-full bg-gray-300 mt-1 flex-shrink-0"></div>
+                <div class="w-px flex-1 bg-gray-200 mt-1"></div>
+              </div>
+              <div class="pb-5">
+                <div class="flex flex-wrap justify-between items-start gap-2">
+                  <div>
+                    <p class="font-semibold text-gray-800">SMA Negeri 1 Serui</p>
+                  </div>
+                  <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">Jul 2012 – Mei 2015</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 rounded-full bg-gray-300 mt-1 flex-shrink-0"></div>
+                <div class="w-px flex-1 bg-gray-200 mt-1"></div>
+              </div>
+              <div class="pb-5">
+                <div class="flex flex-wrap justify-between items-start gap-2">
+                  <div>
+                    <p class="font-semibold text-gray-800">SMP Negeri 2 Serui</p>
+                  </div>
+                  <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">Jul 2009 – Jul 2012</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 rounded-full bg-gray-300 mt-1 flex-shrink-0"></div>
+              </div>
+              <div>
+                <div class="flex flex-wrap justify-between items-start gap-2">
+                  <div>
+                    <p class="font-semibold text-gray-800">SD Negeri Inpres 1 Serui</p>
+                  </div>
+                  <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">Jun 2003 – Jun 2009</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Pengalaman Kerja -->
+        <div class="bg-white rounded-xl border border-gray-100 p-5">
+          <h2 class="font-bold text-gray-800 mb-5 flex items-center gap-2">
+            <span class="w-1 h-5 bg-primary rounded-full"></span>
+            Pengalaman
+          </h2>
+          <div class="space-y-5">
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 rounded-full bg-primary mt-1 flex-shrink-0"></div>
+                <div class="w-px flex-1 bg-gray-200 mt-1"></div>
+              </div>
+              <div class="pb-5">
+                <div class="flex flex-wrap justify-between items-start gap-2">
+                  <div>
+                    <p class="font-semibold text-gray-800">Pengajar — Jurusan Informatika</p>
+                    <p class="text-sm text-primary">Universitas Papua (UNIPA)</p>
+                  </div>
+                  <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">Agt 2022 – Sekarang</span>
+                </div>
+                <ul class="mt-2 space-y-1">
+                  <li class="text-xs text-gray-500 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-gray-400"></span>Jaringan Komputer</li>
+                  <li class="text-xs text-gray-500 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-gray-400"></span>Sistem Administrasi Jaringan</li>
+                  <li class="text-xs text-gray-500 flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-gray-400"></span>Wireless Sensor Network (WSN)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 rounded-full bg-primary mt-1 flex-shrink-0"></div>
+              </div>
+              <div>
+                <div class="flex flex-wrap justify-between items-start gap-2">
+                  <div>
+                    <p class="font-semibold text-gray-800">Perwakilan Angkatan (PA) — PK-234</p>
+                    <p class="text-sm text-primary">LPDP · Persiapan Keberangkatan</p>
+                  </div>
+                  <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">2023</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Koordinator bidang Publikasi dan Dokumentasi</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Penghargaan -->
+        <div class="bg-white rounded-xl border border-gray-100 p-5">
+          <h2 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="w-1 h-5 bg-primary rounded-full"></span>
+            Penghargaan & Beasiswa
+          </h2>
+          <div class="flex items-start gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800">Beasiswa LPDP 2023</p>
+              <p class="text-sm text-primary">Jalur Afirmasi Putra/Putri Papua</p>
+              <p class="text-xs text-gray-500 mt-1">Lembaga Pengelola Dana Pendidikan — Kementerian Keuangan RI</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-secondary text-white py-10 px-4 mt-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <img src="/assets/img/logo-Photoroom.png" alt="Boibanet" class="h-8 w-auto brightness-0 invert">
+        <p class="text-blue-200 text-sm">Jaringan Komputer & Teknologi Digital</p>
+      </div>
+      <div class="flex gap-6 text-sm text-blue-200">
+        <a href="/profil.html" class="hover:text-white transition">Profil</a>
+        <a href="/blog/index.html" class="hover:text-white transition">Blog</a>
+        <a href="/kontak.html" class="hover:text-white transition">Kontak</a>
+      </div>
+      <p class="text-blue-300 text-xs">© <span id="footer-year"></span> Boibanet. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
