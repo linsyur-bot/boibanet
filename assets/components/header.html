@@ -9,12 +9,12 @@
 
     <!-- Desktop menu -->
     <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-      <li><a href="/"                    data-nav="home"       class="nav-link hover:text-primary transition-colors">Home</a></li>
-      <li><a href="/tentang.html"        data-nav="tentang"    class="nav-link hover:text-primary transition-colors">Tentang</a></li>
-      <li><a href="/materi/index.html"   data-nav="materi"     class="nav-link hover:text-primary transition-colors">Materi</a></li>
-      <li><a href="/blog/index.html"     data-nav="blog"       class="nav-link hover:text-primary transition-colors">Blog</a></li>
-      <li><a href="/portofolio/index.html" data-nav="portofolio" class="nav-link hover:text-primary transition-colors">Portofolio</a></li>
-      <li><a href="/cv.html"             data-nav="cv"         class="nav-link hover:text-primary transition-colors">CV</a></li>
+      <li><a href="/"                      data-nav="home"        class="nav-link hover:text-primary transition-colors">Home</a></li>
+      <li><a href="/tentang.html"          data-nav="tentang"     class="nav-link hover:text-primary transition-colors">Tentang</a></li>
+      <li><a href="/materi/index.html"     data-nav="materi"      class="nav-link hover:text-primary transition-colors">Materi</a></li>
+      <li><a href="/blog/index.html"       data-nav="blog"        class="nav-link hover:text-primary transition-colors">Blog</a></li>
+      <li><a href="/portofolio/index.html" data-nav="portofolio"  class="nav-link hover:text-primary transition-colors">Portofolio</a></li>
+      <li><a href="/cv.html"               data-nav="cv"          class="nav-link hover:text-primary transition-colors">CV</a></li>
     </ul>
 
     <!-- Hamburger -->
@@ -43,13 +43,14 @@
 
   <!-- Wave -->
   <div class="w-full overflow-hidden leading-none bg-white">
-    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none" class="w-full h-10 block">
+    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none" class="w-full h-20 block">
       <path
-        d="M0,0 C120,80 240,0 360,40 C480,80 600,0 720,40 C840,80 960,0 1080,40 C1200,80 1320,10 1440,0 L1440,80 L0,80 Z"
+        d="M0,10 C80,100 160,0 240,60 C320,120 400,0 480,60 C560,120 640,0 720,60 C800,120 880,0 960,60 C1040,120 1120,0 1200,60 C1280,120 1360,20 1440,10 L1440,120 L0,120 Z"
         fill="#f9fafb"/>
     </svg>
   </div>
+
 </nav>
 
 <style>
@@ -65,11 +66,10 @@
 </style>
 
 <script>
-  // Toggle hamburger
-  const toggle    = document.getElementById('menu-toggle');
+  const toggle     = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-  const iconOpen  = document.getElementById('icon-open');
-  const iconClose = document.getElementById('icon-close');
+  const iconOpen   = document.getElementById('icon-open');
+  const iconClose  = document.getElementById('icon-close');
 
   toggle.addEventListener('click', () => {
     const isHidden = mobileMenu.classList.toggle('hidden');
@@ -77,17 +77,17 @@
     iconClose.classList.toggle('hidden', isHidden);
   });
 
-  // Auto active berdasarkan URL
+  // Auto active
   const path = window.location.pathname;
   document.querySelectorAll('.nav-link').forEach(link => {
     const nav = link.dataset.nav;
     const isActive =
-      (nav === 'home'       && path === '/')                          ||
-      (nav === 'tentang'    && path.includes('/tentang'))             ||
-      (nav === 'materi'     && path.includes('/materi'))              ||
-      (nav === 'blog'       && path.includes('/blog'))                ||
-      (nav === 'portofolio' && path.includes('/portofolio'))          ||
-      (nav === 'cv'         && path.includes('/cv'));
+      (nav === 'home'        && path === '/')                 ||
+      (nav === 'tentang'     && path.includes('/tentang'))    ||
+      (nav === 'materi'      && path.includes('/materi'))     ||
+      (nav === 'blog'        && path.includes('/blog'))       ||
+      (nav === 'portofolio'  && path.includes('/portofolio')) ||
+      (nav === 'cv'          && path.includes('/cv'));
     if (isActive) link.classList.add('active');
   });
 
