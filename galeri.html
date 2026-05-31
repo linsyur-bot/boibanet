@@ -21,6 +21,19 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
     behold-widget { display: block; width: 100%; }
+
+    /* Coba override watermark */
+    behold-widget::part(footer) { display: none !important; }
+    behold-widget::part(watermark) { display: none !important; }
+
+    /* Fallback kalau shadow DOM bisa ditembus */
+    .behold-footer { display: none !important; }
+    .behold-watermark { display: none !important; }
+    a[href*="behold.so"] {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      position: absolute !important;
+    }
   </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
@@ -81,6 +94,20 @@
         const d=document,s=d.createElement("script");s.type="module";
         s.src="https://w.behold.so/widget.js";d.head.append(s);
       })();
+
+      // Coba sembunyikan watermark setelah widget load
+      setTimeout(() => {
+        const widget = document.querySelector('behold-widget');
+        if (widget && widget.shadowRoot) {
+          const style = document.createElement('style');
+          style.textContent = `
+            [class*="footer"] { display: none !important; }
+            [class*="watermark"] { display: none !important; }
+            a[href*="behold"] { display: none !important; }
+          `;
+          widget.shadowRoot.appendChild(style);
+        }
+      }, 3000);
     </script>
 
   </section>
