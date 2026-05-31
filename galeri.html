@@ -20,7 +20,6 @@
   <script src="/assets/js/include.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; }
-    /* Paksa widget Behold full width */
     behold-widget { display: block; width: 100%; }
   </style>
 </head>
@@ -28,9 +27,7 @@
 
   <div include="/assets/components/header.html"></div>
 
-  <!-- ================================================ -->
   <!-- HEADER HALAMAN -->
-  <!-- ================================================ -->
   <section class="bg-gradient-to-br from-primary to-secondary text-white py-14 px-4 relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
       <div class="absolute top-4 left-10 w-32 h-32 rounded-full bg-white"></div>
@@ -52,12 +49,10 @@
     </div>
   </section>
 
-  <!-- ================================================ -->
   <!-- INSTAGRAM FEED -->
-  <!-- ================================================ -->
   <section class="max-w-6xl mx-auto px-4 py-12 flex-1 w-full">
 
-    <!-- Info -->
+    <!-- Info Bar -->
     <div class="flex items-center justify-between mb-8">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center">
@@ -79,15 +74,14 @@
       </a>
     </div>
 
-    <!-- ===== BEHOLD WIDGET ===== -->
-<div data-behold-id="pOMa9dM5JhMw7NIXlwwf"></div>
-<script>
-  (function() {
-    const d=document,s=d.createElement("script");s.type="module";
-    s.src="https://w.behold.so/widget.js";d.head.append(s);
-  })();
-</script>
-<!-- ===== END BEHOLD WIDGET ===== -->
+    <!-- BEHOLD WIDGET -->
+    <behold-widget feed-id="pOMa9dM5JhMw7NIXlwwf"></behold-widget>
+    <script>
+      (() => {
+        const d=document,s=d.createElement("script");s.type="module";
+        s.src="https://w.behold.so/widget.js";d.head.append(s);
+      })();
+    </script>
 
   </section>
 
