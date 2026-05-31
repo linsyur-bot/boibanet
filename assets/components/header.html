@@ -1,7 +1,7 @@
 <nav class="bg-white shadow-sm sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
 
-    <!-- Logo -->
+    <!-- Logo + Label -->
     <a href="/" class="flex items-center gap-2">
       <img src="/assets/img/logo-Photoroom.png" alt="Boibanet" class="h-10 w-auto">
       <span class="text-lg font-bold text-secondary">Boibanet</span>
@@ -9,89 +9,33 @@
 
     <!-- Desktop menu -->
     <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-      <li><a href="/"                      data-nav="home"        class="nav-link hover:text-primary transition-colors">Home</a></li>
-      <li><a href="/tentang.html"          data-nav="tentang"     class="nav-link hover:text-primary transition-colors">Tentang</a></li>
-      <li><a href="/materi/index.html"     data-nav="materi"      class="nav-link hover:text-primary transition-colors">Materi</a></li>
-      <li><a href="/blog/index.html"       data-nav="blog"        class="nav-link hover:text-primary transition-colors">Blog</a></li>
-      <li><a href="/portofolio/index.html" data-nav="portofolio"  class="nav-link hover:text-primary transition-colors">Portofolio</a></li>
-      <li><a href="/cv.html"               data-nav="cv"          class="nav-link hover:text-primary transition-colors">CV</a></li>
+      <li><a href="/" data-nav="home" class="hover:text-primary transition">Home</a></li>
+      <li><a href="/tentang.html" data-nav="tentang" class="hover:text-primary transition">Tentang</a></li>
+      <li><a href="/materi/index.html" data-nav="materi" class="hover:text-primary transition">Materi</a></li>
+      <li><a href="/blog/index.html" data-nav="blog" class="hover:text-primary transition">Blog</a></li>
+      <li><a href="/portofolio/index.html" data-nav="portofolio" class="hover:text-primary transition">Portofolio</a></li>
+      <li><a href="/cv.html" data-nav="cv" class="hover:text-primary transition">CV</a></li>
     </ul>
 
     <!-- Hamburger -->
-    <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
-      <svg id="icon-open"  class="w-6 h-6"        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button id="menu-toggle" class="md:hidden text-gray-600">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </button>
 
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-3">
-    <ul class="flex flex-col gap-1 text-sm font-medium text-gray-600">
-      <li><a href="/"                      class="mobile-link block px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-primary transition-colors">Home</a></li>
-      <li><a href="/tentang.html"          class="mobile-link block px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-primary transition-colors">Tentang</a></li>
-      <li><a href="/materi/index.html"     class="mobile-link block px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-primary transition-colors">Materi</a></li>
-      <li><a href="/blog/index.html"       class="mobile-link block px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-primary transition-colors">Blog</a></li>
-      <li><a href="/portofolio/index.html" class="mobile-link block px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-primary transition-colors">Portofolio</a></li>
-      <li><a href="/cv.html"               class="mobile-link block px-3 py-2 rounded-lg hover:bg-gray-50 hover:text-primary transition-colors">CV</a></li>
+  <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
+    <ul class="flex flex-col gap-3 text-sm font-medium text-gray-600">
+      <li><a href="/">Home</a></li>
+      <li><a href="/tentang.html">Tentang</a></li>
+      <li><a href="/materi/index.html">Materi</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+      <li><a href="/portofolio/index.html">Portofolio</a></li>
+      <li><a href="/cv.html">CV</a></li>
     </ul>
   </div>
 
-  <!-- Wave -->
-  <div class="w-full overflow-hidden leading-none bg-white">
-    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none" class="w-full h-20 block">
-      <path
-        d="M0,10 C80,100 160,0 240,60 C320,120 400,0 480,60 C560,120 640,0 720,60 C800,120 880,0 960,60 C1040,120 1120,0 1200,60 C1280,120 1360,20 1440,10 L1440,120 L0,120 Z"
-        fill="#f9fafb"/>
-    </svg>
-  </div>
-
 </nav>
-
-<style>
-  .nav-link.active {
-    color: #1e40af;
-    border-bottom: 2px solid #1e40af;
-    padding-bottom: 2px;
-  }
-  .mobile-link.active {
-    background: #eff6ff;
-    color: #1e40af;
-  }
-</style>
-
-<script>
-  const toggle     = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const iconOpen   = document.getElementById('icon-open');
-  const iconClose  = document.getElementById('icon-close');
-
-  toggle.addEventListener('click', () => {
-    const isHidden = mobileMenu.classList.toggle('hidden');
-    iconOpen.classList.toggle('hidden', !isHidden);
-    iconClose.classList.toggle('hidden', isHidden);
-  });
-
-  // Auto active
-  const path = window.location.pathname;
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const nav = link.dataset.nav;
-    const isActive =
-      (nav === 'home'        && path === '/')                 ||
-      (nav === 'tentang'     && path.includes('/tentang'))    ||
-      (nav === 'materi'      && path.includes('/materi'))     ||
-      (nav === 'blog'        && path.includes('/blog'))       ||
-      (nav === 'portofolio'  && path.includes('/portofolio')) ||
-      (nav === 'cv'          && path.includes('/cv'));
-    if (isActive) link.classList.add('active');
-  });
-
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    if (link.href === window.location.href) link.classList.add('active');
-  });
-</script>
