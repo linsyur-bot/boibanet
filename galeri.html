@@ -20,20 +20,12 @@
   <script src="/assets/js/include.js" defer></script>
   <style>
     body { font-family: 'Inter', sans-serif; }
-    behold-widget { display: block; width: 100%; }
-
-    /* Coba override watermark */
-    behold-widget::part(footer) { display: none !important; }
-    behold-widget::part(watermark) { display: none !important; }
-
-    /* Fallback kalau shadow DOM bisa ditembus */
-    .behold-footer { display: none !important; }
-    .behold-watermark { display: none !important; }
-    a[href*="behold.so"] {
-      opacity: 0 !important;
-      pointer-events: none !important;
-      position: absolute !important;
-    }
+    .masonry { columns: 1; column-gap: 1rem; }
+    @media (min-width: 640px) { .masonry { columns: 2; } }
+    @media (min-width: 1024px) { .masonry { columns: 3; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
+    .gallery-card:hover .card-overlay { opacity: 1; }
+    .card-overlay { opacity: 0; transition: opacity 0.3s ease; }
   </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
@@ -41,78 +33,164 @@
   <div include="/assets/components/header.html"></div>
 
   <!-- HEADER HALAMAN -->
-  <section class="bg-gradient-to-br from-primary to-secondary text-white py-14 px-4 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-4 left-10 w-32 h-32 rounded-full bg-white"></div>
-      <div class="absolute bottom-4 right-20 w-20 h-20 rounded-full bg-white"></div>
-      <div class="absolute top-10 right-40 w-12 h-12 rounded-full bg-white"></div>
-    </div>
-    <div class="max-w-6xl mx-auto relative z-10">
-      <div class="flex items-center gap-2 text-blue-200 text-sm mb-3">
-        <a href="/" class="hover:text-white transition">Home</a>
-        <span>›</span>
-        <span class="text-white">Galeri</span>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-bold mb-2">Galeri</h1>
-      <p class="text-blue-100 text-sm md:text-base">
-        Dokumentasi kegiatan & momen dari Instagram
-        <a href="https://instagram.com/boibanet" target="_blank"
-          class="text-white font-semibold hover:underline ml-1">@boibanet</a>
-      </p>
+  <section class="bg-gradient-to-br from-primary to-secondary text-white py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-3xl font-bold mb-2">Galeri</h1>
+      <p class="text-blue-100">Dokumentasi kegiatan & momen</p>
     </div>
   </section>
 
-  <!-- INSTAGRAM FEED -->
-  <section class="max-w-6xl mx-auto px-4 py-12 flex-1 w-full">
+  <!-- FILTER KATEGORI -->
+  <section class="max-w-6xl mx-auto px-4 py-6">
+    <div class="flex gap-2 flex-wrap">
+      <button onclick="filterKategori(null)"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border bg-primary border-primary text-white transition"
+        data-kat="semua">Semua</button>
+      <button onclick="filterKategori('Kegiatan')"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition"
+        data-kat="Kegiatan">Kegiatan</button>
+      <button onclick="filterKategori('Kampus')"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition"
+        data-kat="Kampus">Kampus</button>
+      <button onclick="filterKategori('Penelitian')"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition"
+        data-kat="Penelitian">Penelitian</button>
+      <button onclick="filterKategori('Umum')"
+        class="filter-btn text-sm px-4 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:border-primary hover:text-primary transition"
+        data-kat="Umum">Umum</button>
+    </div>
+  </section>
 
-    <!-- Info Bar -->
-    <div class="flex items-center justify-between mb-8">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center">
-          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-          </svg>
-        </div>
-        <div>
-          <p class="font-semibold text-gray-800 text-sm">@boibanet</p>
-          <p class="text-gray-400 text-xs">Instagram Feed</p>
-        </div>
-      </div>
-      <a href="https://instagram.com/boibanet" target="_blank"
-        class="flex items-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-purple-600 px-4 py-2 rounded-lg hover:opacity-90 transition">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  <!-- GALERI GRID -->
+  <section class="max-w-6xl mx-auto px-4 pb-16 flex-1">
+
+    <!-- Skeleton -->
+    <div id="galeri-skeleton" class="masonry">
+      <div class="masonry-item rounded-xl bg-gray-200 animate-pulse h-48"></div>
+      <div class="masonry-item rounded-xl bg-gray-200 animate-pulse h-64"></div>
+      <div class="masonry-item rounded-xl bg-gray-200 animate-pulse h-56"></div>
+      <div class="masonry-item rounded-xl bg-gray-200 animate-pulse h-72"></div>
+      <div class="masonry-item rounded-xl bg-gray-200 animate-pulse h-48"></div>
+      <div class="masonry-item rounded-xl bg-gray-200 animate-pulse h-60"></div>
+    </div>
+
+    <!-- Grid -->
+    <div id="galeri-grid" class="masonry hidden"></div>
+
+    <!-- Empty -->
+    <div id="galeri-empty" class="hidden text-center py-16 text-gray-400 text-sm">
+      Belum ada foto.
+    </div>
+
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="modal-galeri"
+    class="hidden fixed inset-0 bg-black/85 z-[9999] flex items-center justify-center px-4"
+    onclick="closeModal()">
+    <div class="relative max-w-2xl w-full" onclick="event.stopPropagation()">
+
+      <button onclick="closeModal()"
+        class="absolute -top-12 right-0 text-white/70 hover:text-white transition">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
-        Follow di Instagram
-      </a>
+      </button>
+
+      <img id="modal-img" src="" alt=""
+        class="w-full rounded-2xl object-contain max-h-[75vh] bg-black shadow-2xl">
+
+      <div class="mt-4">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p id="modal-judul" class="text-white font-semibold text-base"></p>
+            <p id="modal-deskripsi" class="text-gray-300 text-sm mt-1"></p>
+          </div>
+          <span id="modal-kategori" class="flex-shrink-0 text-xs px-2 py-1 rounded bg-white/10 text-white"></span>
+        </div>
+        <p id="modal-tanggal" class="text-gray-400 text-xs mt-2"></p>
+      </div>
+
     </div>
-
-    <!-- BEHOLD WIDGET -->
-    <behold-widget feed-id="pOMa9dM5JhMw7NIXlwwf"></behold-widget>
-    <script>
-      (() => {
-        const d=document,s=d.createElement("script");s.type="module";
-        s.src="https://w.behold.so/widget.js";d.head.append(s);
-      })();
-
-      // Coba sembunyikan watermark setelah widget load
-      setTimeout(() => {
-        const widget = document.querySelector('behold-widget');
-        if (widget && widget.shadowRoot) {
-          const style = document.createElement('style');
-          style.textContent = `
-            [class*="footer"] { display: none !important; }
-            [class*="watermark"] { display: none !important; }
-            a[href*="behold"] { display: none !important; }
-          `;
-          widget.shadowRoot.appendChild(style);
-        }
-      }, 3000);
-    </script>
-
-  </section>
+  </div>
 
   <div include="/assets/components/footer.html"></div>
+
+  <script type="module">
+    import GalleryController from "/assets/js/controllers/GalleryController.js";
+
+    async function loadFoto(kategori = null) {
+      const skeleton = document.getElementById('galeri-skeleton');
+      const grid     = document.getElementById('galeri-grid');
+      const empty    = document.getElementById('galeri-empty');
+
+      const data = await GalleryController.getFoto(kategori);
+
+      skeleton.classList.add('hidden');
+
+      if (data.length === 0) {
+        grid.classList.add('hidden');
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      grid.classList.remove('hidden');
+
+      grid.innerHTML = data.map((item, i) => `
+        <div class="masonry-item gallery-card relative rounded-xl overflow-hidden shadow-sm cursor-pointer"
+          onclick="openModal(${i}, ${JSON.stringify(data).replace(/"/g, '&quot;')})">
+          <img src="${item.img_url}" alt="${item.judul}"
+            class="w-full object-cover block"
+            onerror="this.parentElement.style.display='none'">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-4">
+            <p class="text-white font-semibold text-sm line-clamp-1">${item.judul}</p>
+            <div class="flex items-center justify-between mt-1">
+              <span class="text-xs ${GalleryController.badgeKategori(item.kategori)} px-2 py-0.5 rounded">
+                ${item.kategori}
+              </span>
+              <span class="text-xs text-gray-300">${item.tanggalFormatted}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.openModal = (index, data) => {
+      const item = data[index];
+      document.getElementById('modal-img').src            = item.img_url;
+      document.getElementById('modal-judul').textContent  = item.judul;
+      document.getElementById('modal-deskripsi').textContent = item.deskripsi || '';
+      document.getElementById('modal-kategori').textContent  = item.kategori;
+      document.getElementById('modal-tanggal').textContent   = item.tanggalFormatted;
+      document.getElementById('modal-galeri').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeModal = () => {
+      document.getElementById('modal-galeri').classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+
+    window.filterKategori = (kat) => {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-white', 'border-primary');
+        btn.classList.add('border-gray-300', 'text-gray-600');
+      });
+      const active = document.querySelector(`[data-kat="${kat || 'semua'}"]`);
+      if (active) {
+        active.classList.add('bg-primary', 'text-white', 'border-primary');
+        active.classList.remove('border-gray-300', 'text-gray-600');
+      }
+      loadFoto(kat);
+    };
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    loadFoto();
+  </script>
 
 </body>
 </html>
