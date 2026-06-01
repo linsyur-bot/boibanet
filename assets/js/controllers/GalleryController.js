@@ -1,10 +1,14 @@
 // assets/js/controllers/GalleryController.js
 // ================================================
 // CONTROLLER — GalleryController
-// Tugasnya: proses data dari Model → siap tampil di View
+// Tugasnya: proses data dari Model + CRUD operations
 // ================================================
 
 import GalleryModel from "../models/GalleryModel.js";
+import {
+  collection, addDoc, updateDoc, deleteDoc, doc
+} from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { db } from "../config/firebase-config.js";
 
 // Konversi URL Google Drive → proxy
 function toProxyUrl(url) {
@@ -16,7 +20,8 @@ function toProxyUrl(url) {
 
 const GalleryController = {
 
-  // Untuk galeri/index.html — semua foto
+  // ─── READ ──────────────────────────────────────
+
   async getFoto(kategoriFilter = null) {
     try {
       let data;
@@ -36,7 +41,6 @@ const GalleryController = {
     }
   },
 
-  // Untuk home — foto terbaru
   async getLatest(n = 6) {
     try {
       const data = await GalleryModel.getLatest(n);
@@ -51,7 +55,6 @@ const GalleryController = {
     }
   },
 
-  // Untuk modal detail
   async getDetail(id) {
     try {
       const data = await GalleryModel.getById(id);
@@ -67,7 +70,84 @@ const GalleryController = {
     }
   },
 
-  // Format tanggal → "12 Januari 2025"
+  // Untuk admin — ambil semua tanpa proxy
+  async getAll() {
+    try {
+      return await GalleryModel.getAll();
+    } catch (e) {
+      console.error("GalleryController.getAll:", e);
+      return [];
+    }
+  },
+
+  async getById(id) {
+    try {
+      return await GalleryModel.getById(id);
+    } catch (e) {
+      console.error("GalleryController.getById:", e);
+      return null;
+    }
+  },
+
+  // ─── CREATE ────────────────────────────────────
+
+  async create(data) {
+    try {
+      GalleryController.validate(data);
+      await addDoc(collection(db, "galeri"), {
+        judul:     data.judul.trim(),
+        deskripsi: data.deskripsi?.trim() || '',
+        img_url:   data.img_url.trim(),
+        kategori:  data.kategori,
+        tanggal:   data.tanggal,
+        urutan:    parseInt(data.urutan) || 0,
+      });
+      return { success: true, message: 'Foto berhasil ditambahkan ✓' };
+    } catch (e) {
+      return { success: false, message: e.message };
+    }
+  },
+
+  // ─── UPDATE ────────────────────────────────────
+
+  async update(id, data) {
+    try {
+      GalleryController.validate(data);
+      await updateDoc(doc(db, "galeri", id), {
+        judul:     data.judul.trim(),
+        deskripsi: data.deskripsi?.trim() || '',
+        img_url:   data.img_url.trim(),
+        kategori:  data.kategori,
+        tanggal:   data.tanggal,
+        urutan:    parseInt(data.urutan) || 0,
+      });
+      return { success: true, message: 'Foto berhasil diupdate ✓' };
+    } catch (e) {
+      return { success: false, message: e.message };
+    }
+  },
+
+  // ─── DELETE ────────────────────────────────────
+
+  async delete(id) {
+    try {
+      await deleteDoc(doc(db, "galeri", id));
+      return { success: true, message: 'Foto berhasil dihapus ✓' };
+    } catch (e) {
+      return { success: false, message: e.message };
+    }
+  },
+
+  // ─── VALIDATE ──────────────────────────────────
+
+  validate(data) {
+    if (!data.judul?.trim())   throw new Error('Judul tidak boleh kosong');
+    if (!data.img_url?.trim()) throw new Error('URL Gambar tidak boleh kosong');
+    if (!data.tanggal)         throw new Error('Tanggal tidak boleh kosong');
+  },
+
+  // ─── HELPERS ───────────────────────────────────
+
   formatTanggal(tanggal) {
     if (!tanggal) return "-";
     const bulan = [
@@ -78,7 +158,6 @@ const GalleryController = {
     return `${d.getDate()} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
   },
 
-  // Badge warna kategori
   badgeKategori(kategori) {
     const map = {
       "Kegiatan":   "bg-blue-100 text-blue-700",
